@@ -2,9 +2,9 @@
 
 @php
   $color = match (strtolower($status)) {
-      'To Do' => 'bg-blue-500',
-      'In Progress' => 'bg-yellow-500',
-      'Complete' => 'bg-green-500',
+      'to do' => 'bg-blue-500',
+      'in progress' => 'bg-yellow-500',
+      'complete' => 'bg-green-500',
       default => 'bg-gray-500'
   };
 @endphp

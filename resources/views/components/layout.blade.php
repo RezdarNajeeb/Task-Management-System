@@ -11,7 +11,7 @@
   <body class="bg-gray-900 text-gray-100 pb-6">
     <nav class="bg-gray-800 shadow-md sticky top-0 z-50">
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="" class="text-xl font-bold text-gray-100">Task Management</a>
+        <a href="/tasks" class="text-xl font-bold text-gray-100">Task Management</a>
         <div>
           @auth
             <div class="flex items-center space-x-4">

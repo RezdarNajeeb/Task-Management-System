@@ -1,4 +1,4 @@
-@props(['label', 'name'])
+@props(['label', 'name', 'currentValue' => null])
 
 @php
   $defaults = [
@@ -8,7 +8,7 @@
       'class' =>
           'w-full bg-gray-900 text-gray-100 rounded-lg p-2 border ' .
           ($errors->has($name) ? 'border-red-500' : 'border-gray-700'),
-      'value' => old($name),
+      'value' => old($name, $currentValue),
   ];
 @endphp
 

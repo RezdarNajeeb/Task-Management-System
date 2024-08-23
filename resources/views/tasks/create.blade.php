@@ -8,7 +8,7 @@
 
     <x-forms.textarea label="Description" name="description" />
 
-    <x-forms.input label="Due Date" name="due-date" type="date" />
+    <x-forms.input label="Due Date" name="due_date" type="date" />
 
     <x-forms.select label="Priority" name="priority">
       <x-forms.select-option value="Low" currentValue="{{ old('priority') }}" />

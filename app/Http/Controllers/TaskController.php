@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -11,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index');
+        return view('tasks.index', ['tasks' => Task::all()]);
     }
 
     /**
@@ -19,7 +20,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -27,38 +28,60 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedTaskInformaiton = $request->validate([
+            'title' => 'required|string|max:254',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
+            'priority' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:To Do,In Progress,Complete'
+        ]);
+
+        Task::create($validatedTaskInformaiton);
+
+        return redirect('/tasks');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.show', ['task' => $task]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', ['task' => $task]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Task $task, Request $request)
     {
-        //
+        $validatedTaskInformaiton = $request->validate([
+            'title' => 'required|string|max:254',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
+            'priority' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:To Do,In Progress,Complete'
+        ]);
+
+        $task->update($validatedTaskInformaiton);
+
+        return redirect('/tasks/' . $task->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect('/tasks');
     }
 }

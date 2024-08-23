@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Task;
 use Illuminate\Database\Seeder;
+use Database\Factories\TaskFactory;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TaskSeeder extends Seeder
 {
@@ -12,6 +14,6 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Task::factory(20)->create();
     }
 }
