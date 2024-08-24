@@ -20,9 +20,11 @@ class SessionController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt($validatedUserInformation)) {
+        $isRemember = $request->boolean('remember');
+
+        if (!Auth::attempt($validatedUserInformation, $isRemember)) {
             throw ValidationException::withMessages([
-                'email' => 'Those credentials incorrect, try again.'
+                'email' => 'Those credentials are incorrect, try again.'
             ]);
         }
 
@@ -31,9 +33,14 @@ class SessionController extends Controller
         return to_route('tasks.index');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        // Invalidate the user session and remove the remember me cookie
         Auth::logout();
+
+        // Regenerate the session to avoid session fixation
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('/login');
     }

@@ -3,7 +3,7 @@
 
   <x-page-heading>Create New Task</x-page-heading>
 
-  <x-forms.form action="/" method="POST" class="bg-gray-800 p-6 rounded-lg shadow-md">
+  <x-forms.form action="/tasks" method="POST" class="bg-gray-800 p-6 rounded-lg shadow-md">
     <x-forms.input label="Title" name="title" />
 
     <x-forms.textarea label="Description" name="description" />

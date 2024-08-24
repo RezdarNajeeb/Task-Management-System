@@ -15,20 +15,20 @@
         <div>
           @auth
             <div class="flex items-center space-x-4">
-              <a href="" class="text-gray-400 hover:text-gray-200">Create
+              <a href="/tasks/create" class="text-blue-400 hover:text-blue-500">Create
                 Task</a>
               <form action="/logout" method="POST">
                 @csrf
                 @method('DELETE')
-                <button href="" class="text-gray-400 hover:text-gray-200">
+                <button href="" class="text-red-400 hover:text-red-500">
                   Logout
                 </button>
               </form>
             </div>
           @endauth
           @guest
-            <a href="" class="text-gray-400 hover:text-gray-200 mr-4">Login</a>
-            <a href="" class="text-gray-400 hover:text-gray-200">Register</a>
+            <a href="" class="text-blue-400 hover:text-blue-500 mr-4">Login</a>
+            <a href="" class="text-green-400 hover:text-green-500">Register</a>
           @endguest
         </div>
       </div>

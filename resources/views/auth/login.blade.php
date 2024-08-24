@@ -13,11 +13,15 @@
 
         <x-forms.checkbox label="Remember Me (Optional)" name="remember" />
 
-
         <x-forms.button>Login</x-forms.button>
       </x-forms.form>
 
-      <p class="text-center text-gray-400 mt-6">Don't have an account?
+      <p class="text-center text-gray-400 mt-4">
+        Forgot your password?
+        <a href="{{ route('password.request') }}" class="text-blue-600 hover:text-blue-500">Forget password</a>
+      </p>
+
+      <p class="text-center text-gray-400 mt-2">Don't have an account?
         <a href="/register" class="text-blue-600 hover:text-blue-500">Register</a>
       </p>
     </div>

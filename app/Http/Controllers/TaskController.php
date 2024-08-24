@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -11,8 +12,9 @@ class TaskController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('tasks.index', ['tasks' => Task::all()]);
+    {  
+        $tasks = Task::filter(request()->all())->get();
+        return view('tasks.index', ['tasks' => $tasks]);
     }
 
     /**
@@ -35,6 +37,8 @@ class TaskController extends Controller
             'priority' => 'required|in:Low,Medium,High',
             'status' => 'required|in:To Do,In Progress,Complete'
         ]);
+
+        $validatedTaskInformaiton['user_id'] = Auth::user()->id;
 
         Task::create($validatedTaskInformaiton);
 
