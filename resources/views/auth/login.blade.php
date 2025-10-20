@@ -10,8 +10,7 @@
         <x-forms.input label="Email" name="email" type="email" required />
         <x-forms.input label="Password" name="password" type="password" required />
 
-
-        <x-forms.checkbox label="Remember Me (Optional)" name="remember" />
+      <x-forms.checkbox label="Remember Me (Optional)" name="remember" />
 
         <x-forms.button>Login</x-forms.button>
       </x-forms.form>

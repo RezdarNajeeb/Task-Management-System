@@ -26,3 +26,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('/logout', [SessionController::class, 'destroy']);
 });
+
+
+Route::get('/test', [TaskController::class, 'test']);

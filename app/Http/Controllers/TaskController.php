@@ -12,9 +12,21 @@ class TaskController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {  
+    {
         $tasks = Task::filter(request()->all())->get();
         return view('tasks.index', ['tasks' => $tasks]);
+    }
+
+    public function test()
+    {
+        $a = 1;
+        $b = 2;
+        if($a > $b) {
+            return 'test';
+        }
+        else {
+            return 'rest';
+        }
     }
 
     /**
